@@ -1,0 +1,31 @@
+{
+  "presets": [
+    [
+      // 编译es6 es7，preset-env是一堆plugins的简写
+      "@babel/preset-env",
+      {
+        "debug": false,
+        "modules": false,
+        "useBuiltIns": "usage",
+        "targets": {
+          "browsers": "defaults"
+        }
+      }
+    ],
+    // 编译typescript
+    "@babel/preset-typescript",
+    // 编译react
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    "react-hot-loader/babel",
+    // babel polyfill
+    "@babel/plugin-transform-runtime", // 依赖babel-runtime
+    // 支持动态引入
+    "@babel/plugin-syntax-dynamic-import",
+    // 支持es6装饰器
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+    // 支持class 静态属性
+    "@babel/plugin-proposal-class-properties"
+  ]
+}
