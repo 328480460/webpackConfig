@@ -7,17 +7,17 @@ interface IProps {
 }
 
 export default class Header extends PureComponent<IProps> {
-  static defaultProps;
-  render() {
+  public static defaultProps;
+  public render(): JSX.Element {
     const { name } = this.props;
     const res = count(name);
-    const obj = { name: '老张' };
+    const obj = { name: 'wqeqw' };
     const cloneObj = cloneDeep(obj);
     return (
       <header>
         {res}
         {cloneObj.name}
-        <img src={require('@assets/test.png')} />
+        <img src={require('@assets/test.png')} alt="logo" />
       </header>
     );
   }

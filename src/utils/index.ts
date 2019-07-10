@@ -1,3 +1,4 @@
-export const count = (count: string) => {
-  return `${count}sddddddd`;
+export const count = (num: string): string => {
+  const a = '123';
+  return `${num}sddddddd`;
 };

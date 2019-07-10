@@ -3,7 +3,7 @@ import { cloneDeep } from 'lodash';
 import style from './index.less';
 import { count } from '../../utils';
 
-const obj = { age: '你好' };
+const obj = { age: 'qweqw' };
 
 const cloneObj = cloneDeep(obj);
 

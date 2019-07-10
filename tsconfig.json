@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    // Target latest version of ECMAScript.
+    "target": "esnext",
+    // Search under node_modules for non-relative imports.
+    "moduleResolution": "node",
+    // Process & infer types from .js files.
+    "allowJs": true,
+    // Don't emit; allow Babel to transform files.
+    "noEmit": true,
+    // Enable strictest settings like strictNullChecks & noImplicitAny.
+    "strict": false,
+    // Disallow features that require cross-file information for emit.
+    "isolatedModules": true,
+    // Import non-ES modules as default imports.
+    "esModuleInterop": true,
+    // 隐式合成所有export作为default
+    "allowSyntheticDefaultImports": true,
+    // 对修饰器的实验支持是一项将在将来版本中更改的功能
+    "experimentalDecorators": true,
+    "lib": ["dom", "es7"],
+    "jsx": "react",
+    "module": "esnext",
+    "baseUrl": ".",
+    "paths": {}
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "build", "dll", "dist", "mocker", "jest"]
+}

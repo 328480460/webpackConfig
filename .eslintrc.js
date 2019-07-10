@@ -4,23 +4,35 @@ module.exports = {
         browser: true,
         node: true,
     },
-    extends: ['airbnb', 'eslint:recommended'],
+    extends: [
+        'airbnb',
+        'eslint:recommended',
+        'plugin:@typescript-eslint/recommended',  // Uses the recommended rules from the @typescript-eslint/eslint-plugin
+        'prettier',
+        'plugin:prettier/recommended',  // Enables eslint-plugin-prettier and displays prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
+    ],
     plugins: [
-        'babel',
-        'import',
-        'jsx-a11y',
         'react',
         'prettier',
+        '@typescript-eslint'
     ],
-    parser: 'babel-eslint',
+    parser: '@typescript-eslint/parser',
     parserOptions: {
         ecmaVersion: 6,
         sourceType: 'module',
         ecmaFeatures: {
             jsx: true
-        }
+        },
+        project: './tsconfig.json',
+        tsconfigRootDir: './',
+        extraFileExtensions: [".tsx"]
     },
     rules: {
+        "global-require": 'off',
+        'lines-between-class-members': 'off',
+        "import/prefer-default-export": 'off',
+        "@typescript-eslint/interface-name-prefix": 'off',
+        '@typescript-eslint/indent': 'off',
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", "ts", "tsx"] }],
         'linebreak-style': 'off', // Don't play nicely with Windows.
         'arrow-parens': 'off', // Incompatible with prettier
