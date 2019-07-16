@@ -8,5 +8,25 @@
   </head>
   <body>
     <div id="root"></div>
+    <input type="text" id="input" />
   </body>
+  <script>
+    const input = document.querySelector('#input');
+    const root = document.querySelector('#root');
+    const obj = {};
+    input.oninput = e => {
+      console.log(e.target.value)
+      obj.data = e.target.value;
+    };
+    
+    Object.defineProperty(obj, 'data', {
+      set(value) {
+        input.value = value;
+        root.innerHTML = value;
+        console.log(input.value, value)
+      }
+    })
+
+    obj.data = '123';
+  </script>
 </html>

@@ -5,8 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-  <link rel="shortcut icon" href="logo.svg"><link href="./css/app.70e2664485c167d11911.css" rel="stylesheet"></head>
+  <link rel="shortcut icon" href="logo.svg"></head>
   <body>
     <div id="root"></div>
-  <script type="text/javascript" src="js/runtime~app.bf0a27c13b2bda64c831.js"></script><script type="text/javascript" src="js/common.9b1cd847fd52bfa899a7.js"></script><script type="text/javascript" src="js/app.e42bfadf5164b0dca1af.js"></script></body>
+    <input type="text" id="input" />
+  <script type="text/javascript" src="js/runtime~app.f572360ce6607f67a04c.js"></script><script type="text/javascript" src="js/common.501bc66d06ba1ecc6304.js"></script><script type="text/javascript" src="js/app.4b2b1dd28cdf5d4456ce.js"></script></body>
+  <script>
+    const input = document.querySelector('#input');
+    const root = document.querySelector('#root');
+    const obj = {};
+    input.oninput = e => {
+      console.log(e.target.value)
+      obj.data = e.target.value;
+    };
+    
+    Object.defineProperty(obj, 'data', {
+      set(value) {
+        input.value = value;
+        root.innerHTML = value;
+        console.log(input.value, value)
+      }
+    })
+
+    obj.data = '123';
+  </script>
 </html>

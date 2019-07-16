@@ -5,7 +5,7 @@ const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const manifest = require('../dll/vendors-manifest.json');
 
 module.exports = {
-	devtool: 'source-map',
+	devtool: 'cheap-module-eval-source-map',
 	entry: {
 		app: path.resolve(__dirname, '../src/index.js')
 	},
