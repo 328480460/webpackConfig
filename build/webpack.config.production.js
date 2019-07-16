@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   devtool: 'source-map',
@@ -27,7 +28,7 @@ module.exports = {
             options: {
               workers: 2,
               workerParallelJobs: 50,
-              name: 'my-pool'
+              name: 'my-pool',
             },
           },
           'babel-loader',
@@ -104,6 +105,8 @@ module.exports = {
       filename: './css/[name].[hash].css',
       chunkFilename: './css/[name].[chunkhash].css',
     }),
+
+    new BundleAnalyzerPlugin()
   ],
   optimization: {
     minimize: true,
