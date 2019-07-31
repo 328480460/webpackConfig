@@ -21,3 +21,5 @@ import React from 'react';
 import Keys from './page/TestDemo/Keys';
 
 reactDOM.render(<Keys />, document.querySelector('#root'));
+
+const a = '';

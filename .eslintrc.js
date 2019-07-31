@@ -1,28 +1,40 @@
 module.exports = {
+  // 解析器类型 https://www.npmjs.com/package/@typescript-eslint/parser#configuration
+  parser: '@typescript-eslint/parser',
+  // 解析器参数配置
+  parserOptions: {
+    // es版本号
+    ecmaVersion: 2015,
+    // 代码类型
+    sourceType: 'module',
+    // es特性配置
+    ecmaFeatures: {
+      jsx: true,
+    },
+    // 使用的ts编译选项 https://www.tslang.cn/docs/handbook/tsconfig-json.html
+    project: './tsconfig.json',
+    // ts检测目录
+    tsconfigRootDir: './',
+    extraFileExtensions: ['.tsx'],
+  },
   env: {
     es6: true,
     browser: true,
-    node: true
+    node: true,
   },
+  // eslint: 开头的是 ESLint 官方的扩展，一共有两个：eslint:recommended 、eslint:all
+  // plugin: 开头的是扩展是插件类型，也可以直接在 plugins 属性中进行设置
+  // npm 包的扩展必须以 eslint-config- 开头，使用时可以省略这个头
   extends: [
     'airbnb',
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended', // Uses the recommended rules from the @typescript-eslint/eslint-plugin
-    // 'prettier',
-    'plugin:prettier/recommended' // Enables eslint-plugin-prettier and displays prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
+    'plugin:prettier/recommended'
   ],
-  plugins: ['react', 'prettier', '@typescript-eslint'],
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaVersion: 6,
-    sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true
-    },
-    project: './tsconfig.json',
-    tsconfigRootDir: './',
-    extraFileExtensions: ['.tsx']
-  },
+  // 官方的规则只能检查标准的 JavaScript 语法，如果你写的是 JSX 或者 Vue 单文件组件
+  // 需要安装 ESLint 的插件，来定制一些特定的规则进行检查
+  // ESLint 的插件与扩展一样有固定的命名格式，以 eslint-plugin- 开头，使用的时候也可以省略这个头。
+  plugins: ['react', '@typescript-eslint'],
   rules: {
     'global-require': 'off',
     'lines-between-class-members': 'off',
@@ -56,23 +68,18 @@ module.exports = {
       2,
       {
         required: {
-          every: ['id']
-        }
-      }
+          every: ['id'],
+        },
+      },
     ], // for nested label htmlFor error
 
-    'prettier/prettier': [
-      'error',
-      {
-        singleQuote: true
-      }
-    ]
+    'prettier/prettier': 'error'
   },
   settings: {
     'import/resolver': {
       webpack: {
-        config: './build/webpack.config.js'
-      }
-    }
-  }
+        config: './build/webpack.config.js',
+      },
+    },
+  },
 };
