@@ -112,26 +112,30 @@ module.exports = {
     minimize: true,
     runtimeChunk: true,
     splitChunks: {
-      chunks: 'all',
-      minSize: 1,
-      minChunks: 1,
-      maxAsyncRequests: 2,
-      maxInitialRequests: 2,
-      name: 'common',
-      // cacheGroups: {
-      //     vendors: {
-      //         test: /[\\/]node_modules[\\/]/,
-      //         chunks: 'initial',
-      //         minChunks: 2
-      //     },
-      //     styles: {
-      //         name: 'styles',
-      //         test: /\.css$/,
-      //         chunks: 'all',
-      //         enforce: true,
-      //         priority: 20
-      //     }
-      // }
+      automaticNameDelimiter: '~',
+      cacheGroups: {
+          vendors: {
+            test: /(react|react-dom)/, // 这三个依赖打包成一个vendors
+            chunks: 'all',
+            priority: 100,
+            minChunks: 1, // 最小被引用次数
+            name: 'vendors'
+          },
+          lodash: {
+            test: /lodash/,
+            chunks: 'all',
+            priority: 95,
+            minChunks: 1, // 最小被引用次数
+            name: 'lodash'
+          },
+          commons: {
+              test: /[\\/]node_modules[\\/]/,  // 打包范围
+              chunks: 'all',  // 异步和同步
+              minChunks: 1, // 最小被引用次数
+              priority: 90,
+              name: 'commons'
+          },
+      }
     },
     minimizer: [
       new TerserPlugin({
